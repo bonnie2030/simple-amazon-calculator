@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<style>
+  /* Styles for the box where the user types the cost */
+  .cost-input {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    width: 150px;
+    margin-right: 10px;
+  }
+
+  /* Styles for the Calculate button */
+  .calculate-button {
+    background-color: #057c15; /* Amazon-like orange */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  /* Styles for the final total cost text */
+  .total-cost-display {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #1a1a1a;
+  }
+</style>
+  </head>
+<p>Amazon Shipping Calculator</p>
+
+<input placeholder="Cost of order" class="cost-input js-cost-input">
+
+<button onclick="calculateTotal();" class="calculate-button">Calculate</button>
+
+<p class="total-cost-display js-total-cost"></p> 
+
+
+<script>
+  function calculateTotal() {
+    
+    // Note: The JavaScript still uses the 'js-cost-input' and 'js-total-cost'
+    // classes, which is a good practice to separate styling from logic.
+    const inputElement = document.querySelector('.js-cost-input');
+    let cost = Number(inputElement.value);
+
+    if (cost < 40) {
+      cost = cost + 10;
+    }
+
+    document.querySelector('.js-total-cost')
+      .innerHTML = `Total cost: $${cost.toFixed(2)}`; 
+  }
+</script>
+</html>
